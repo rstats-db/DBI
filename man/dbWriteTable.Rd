@@ -7,10 +7,11 @@
 dbWriteTable(conn, name, value, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
+\item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{A character string specifying a DBMS table name.}
+\item{name}{A character string specifying the unquoted DBMS table name,
+or the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 
 \item{value}{a \link{data.frame} (or coercible to data.frame).}
 
@@ -62,8 +63,7 @@ The \code{name} argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 \itemize{
 \item If an unquoted table name as string: \code{dbWriteTable()} will do the quoting,
-perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
-so that all optional arguments are passed along
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
 \item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
 }
 
@@ -103,12 +103,13 @@ and native encodings)
 (if supported by the database)
 \item date
 (if supported by the database;
-returned as integers with class \code{Date})
+returned as \code{Date})
 \item time
 (if supported by the database;
 returned as objects that inherit from \code{difftime})
 \item timestamp
 (if supported by the database;
+returned as \code{POSIXlt}
 with time zone support)
 }
 

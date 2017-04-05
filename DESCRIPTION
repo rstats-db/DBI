@@ -1,6 +1,6 @@
 Package: DBI
-Version: 0.5-16
-Date: 2017-02-26
+Version: 0.6-1
+Date: 2017-04-01
 Title: R Database Interface
 Description: A database interface definition for communication
     between R and relational database management systems.  All
@@ -18,9 +18,12 @@ Suggests:
     covr,
     hms,
     knitr,
+    magrittr,
+    rprojroot,
     rmarkdown,
-    RSQLite (>= 1.1),
-    testthat
+    RSQLite (>= 1.1-2),
+    testthat,
+    xml2
 Encoding: UTF-8
 License: LGPL (>= 2)
 URL: http://rstats-db.github.io/DBI
@@ -40,7 +43,6 @@ Collate:
     'interpolate.R'
     'quote.R'
     'rownames.R'
-    'spec.R'
     'table-create.R'
     'table-insert.R'
     'table.R'
@@ -48,4 +50,4 @@ Collate:
     'util.R'
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.0.1
